@@ -1,0 +1,59 @@
+.el-header, .el-footer {
+  color: #333;
+  text-align: center;
+}
+.bg-dark{
+  margin-top: 15px;
+  height: 50px;
+}
+
+.title{
+  font-size: 20px;
+  line-height: 50px;
+}
+.input-with-select{
+
+}
+.el-carousel{
+  margin-top: 150px;
+}
+.recommend{
+  border: solid 1px gainsboro;
+  box-shadow: -3px -3px 5px #999;
+  text-align: center;
+}
+.recommend-title{
+  margin-top: 10px;
+  font-size: 20px;
+}
+.braed{
+  margin-top: 20px;
+  height: 20px;
+}
+.br{
+  font-size: 20px;
+}
+.recommend-product{
+  border: solid 1px gainsboro;
+
+  width: 200px;
+  height: 300px;
+}
+/*-----------------------------------------------------------------------*/
+
+
+.el-carousel__item h3 {
+  color: #475669;
+  font-size: 14px;
+  opacity: 0.75;
+  line-height: 200px;
+  margin: 0;
+}
+
+.el-carousel__item:nth-child(2n) {
+  background-color: #99a9bf;
+}
+
+.el-carousel__item:nth-child(2n+1) {
+  background-color: #d3dce6;
+}
