@@ -2,20 +2,19 @@
   <el-container>
     <el-header height="120px">
       <el-row style="background-color: #B3C0D1">
-        <div></div>
         <el-col :span="6">
           <div class="bg-dark">
             <span class="title">校园置换</span>
           </div>
         </el-col>
-        <el-col :span="6" offset="3">
+        <el-col :span="6" :offset="3">
           <div class="bg-dark">
               <el-input placeholder="请输入内容" >
-                <el-button  class="input-with-select" slot="append" icon="el-icon-search" @click="onclick"></el-button>
+                <el-button  class="input-with-select" slot="append" icon="el-icon-search"></el-button>
               </el-input>
             </div>
         </el-col>
-        <el-col :span="6" offset="3">
+        <el-col :span="6" :offset="3">
           <div class="bg-dark">
             <el-button  icon="el-icon-user-solid">
               <el-link type="primary">登录</el-link>
@@ -28,6 +27,8 @@
         <el-col :span="24">
           <div class="braed">
             <el-link><span class="br">首页</span></el-link>
+            |
+            <el-link @click="onclick"><span class="br">发布闲置</span></el-link>
             |
             <el-link><span class="br">求购商城</span></el-link>
             |
@@ -63,8 +64,10 @@
         <div>关于我们</div>
         <div>团队信息</div>
       </div>
+
     </el-footer>
   </el-container>
+
 </template>
 
 <script>
