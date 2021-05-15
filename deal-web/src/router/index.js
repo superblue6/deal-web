@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Index from "../components/Index";
 import AddGoods from "../view/Goods/AddGoods";
+import GoodsDetail from "../view/Goods/GoodsDetail";
 Vue.use(Router)
 
 export default new Router({
@@ -14,8 +15,13 @@ export default new Router({
     },
     {
       path: '/addGoods',
-      name: AddGoods,
+      name: 'AddGoods',
       component: AddGoods
+    },
+    {
+      path: '/goodsDetail',
+      name: 'GoodsDetail',
+      component: GoodsDetail
     }
   ]
 })

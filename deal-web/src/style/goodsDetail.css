@@ -1,0 +1,101 @@
+.header{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.like_bt{
+height: 30px;
+}
+.back{
+  display: block;
+
+}
+.body{
+  padding: 0;
+}
+.img{
+  height: 300px;
+}
+.card{
+  margin-top: 8px;
+  border-bottom: #999999 solid 3px;
+}
+.left{
+  display: flex;
+  padding-left: 30px;
+  flex-direction: column;
+  align-items: flex-start;
+  height: 200px;
+
+}
+.title{
+  padding-top: 15px;
+  font-size: 30px;
+  font-weight: bold;
+  font-family: PingFang SC;
+}
+.price{
+  font-style: italic;
+  font-size: 15px;
+}
+.des{
+  padding-top: 18px;
+}
+.right{
+  display: flex;
+  flex-direction: column;
+  height: 200px;
+}
+.da{
+  display: flex;
+  height: 80px;
+}
+.visit{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  height: 100px;
+  padding-top: 25px;
+  padding-left: 10px;
+}
+.like{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  height: 100px;
+  padding-top: 25px;
+  padding-left: 20px;
+}
+.rate{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  height: 100px;
+  padding-top: 25px;
+  padding-left: 20px;
+}
+.visit_span{
+  height: 20px;
+  font-size: 14px;
+  font-style: italic;
+}
+.visit_number{
+  display: flex;
+  flex-direction: row;
+  height: 20px;
+  margin-top: 6px;
+  font-size: 10px;
+}
+.vn{
+  padding-left: 5px;
+  height: 20px;
+  line-height: 20px;
+}
+.rated{
+  display: flex;
+  flex-direction: row;
+  padding-left: 10px;
+  padding-top: 5px;
+  font-size: 15px;
+  font-weight: bold;
+}

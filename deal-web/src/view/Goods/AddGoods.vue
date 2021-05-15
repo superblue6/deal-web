@@ -33,7 +33,6 @@
                          :http-request="pushPictures"
                          :file-list="fileList" >
                 <el-button slot="trigger" size="small" type="primary">选取文件</el-button>
-<!--                <el-button style="margin-left: 10px;" size="small" type="success" @click="submitUpload">上传到服务器</el-button>-->
                 <div slot="tip" class="el-upload__tip">只能上传jpg/png文件，且不超过500kb</div>
               </el-upload>
             </el-form-item>
@@ -114,28 +113,9 @@
             }
           })
         },
-        submitUpload(param){
-          // this.goods.append("pictures",param.file);
-          this.$refs.upload.submit();
-          // this.pictures.push(param.file);
-        },
+        // 将上传的图片添加到表单中
         pushPictures(param){
           this.formData.append("pictures",param.file);
-        },
-        //上传图片成功后获取访问链接
-        uploadHandle(param){
-          let _this=this;
-          let form=new FormData();
-          form.append("pictures",param.file)
-          form.append("goods","1254")
-          this.$axios.post("/goods/uploadPicture",form,{headers:{'Content-Type':'multipart/form-data'}}).then(res=>{
-            if (res.returnCode=="0"){
-              _this.goods.picturesUrl=res.beans;
-              _this.fileList.push({name:param.file.name,url:res.beans});
-            }else {
-              _this.errorAlert(res.returnMessage);
-            }
-          });
         },
         //提交上传
         submit(){
@@ -168,6 +148,7 @@
           this.$refs[formName].resetFields();
           this.$refs.upload.clearFiles();
         },
+        //错误提示框
         errorAlert(message) {
           Notification.error({
             title: '错误',
@@ -175,6 +156,7 @@
             customClass:'custom-error'
           })
         },
+        //成功提示框
         successAlert(message){
           Notification.success({
             title:'成功',
