@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Index from "../components/Index";
+import Index from "../view";
 import AddGoods from "../view/Goods/AddGoods";
 import GoodsDetail from "../view/Goods/GoodsDetail";
 Vue.use(Router)

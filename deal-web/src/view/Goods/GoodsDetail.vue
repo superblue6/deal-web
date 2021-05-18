@@ -6,8 +6,8 @@
         <el-col :span="14" :offset="5">
           <el-card :body-style="{ padding: '0px' }">
             <div slot="header" class="header">
-              <span class="back">←  Back</span>
-              <el-button class="like_bt" @click="click">❤</el-button>
+              <el-link type="success" @click="back">←  Back</el-link>
+              <el-button class="like_bt" @click="click" :disabled="goodsDetail.isLike">❤</el-button>
             </div>
             <div class="body">
               <div>
@@ -32,14 +32,14 @@
                           <span class="visit_span">被浏览 :</span>
                           <div class="visit_number">
                             <el-image style="height: 20px;width: 20px" src="./static/articleReadEyes.png"></el-image>
-                            <span class="vn">123546</span>
+                            <span class="vn">{{goodsDetail.visit}}</span>
                           </div>
                         </div>
                         <div class="like">
                           <span class="visit_span">被喜欢 :</span>
                           <div class="visit_number">
                             <el-image  style="height: 20px;width: 20px" src="./static/heart.jpg"></el-image>
-                            <span class="vn">123546</span>
+                            <span class="vn">{{goodsDetail.like}}</span>
                           </div>
                         </div>
                         <div class="rate">
@@ -58,7 +58,7 @@
                     </div>
                     <div class="rated">
                       <span>我认为 :</span>
-                      <el-rate v-model="rate" show-text :texts="texts" text-colorElContainer="#ff9900"></el-rate>
+                      <el-rate v-model="rate" show-text :texts="texts" text-colorElContainer="#ff9900" @change="changeScore"></el-rate>
                     </div>
                   </div>
                 </el-col>
@@ -68,7 +68,6 @@
           </el-card>
         </el-col>
       </el-row>
-
     </el-main>
     <el-footer></el-footer>
   </el-container>
@@ -89,21 +88,26 @@
               price:'',
               des:'',
               score:4,
+              visit:'',
+              like:'',
+              scoreTimes:'',
+              isLike:false
             },
             sellerContact:{},
-            rate:'',
+            rate:0,
             texts:['很不值','不值','一般','很值','无脑入']
           }
         },
       methods:{
         load(){
           this.getGoodsDetail();
+          this.getGoodsScore();
         },
         //获取商品详细信息
         getGoodsDetail(){
           let _this=this;
           this.$axios.get("/goods/getGoodsDetail?id="+this.goodsId).then(res=>{
-            _this.goodsDetail.pictures=res.bean.dalItem.picturesUrl.split(",");
+            _this.goodsDetail.pictures=res.bean.dalItem.picturesurl.split(",");
             _this.goodsDetail.title=res.bean.dalItem.title;
             _this.goodsDetail.price=res.bean.dalItem.price;
             _this.goodsDetail.des=res.bean.dalItem.des;
@@ -113,6 +117,28 @@
         click(){
           debugger;
         },
+        //返回上一层
+        back(){
+          this.$router.back();
+        },
+        changeScore(score){
+          let _this=this;
+          this.$axios.get("/goods/changeGoodsScore?id="+this.goodsId+"&number="+score+"&type="+"score").then(
+            res=>{
+              this.getGoodsScore();
+            }
+          );
+
+        },
+        getGoodsScore(){
+          let _this=this;
+          this.$axios.get("/goods/getGoodsScore?id="+this.goodsId).then(res=>{
+            _this.goodsDetail.visit=res.bean.itemVisit;
+            _this.goodsDetail.like=res.bean.itemLike;
+            _this.goodsDetail.score=parseInt(res.bean.itemSorce);
+            _this.goodsDetail.scoreTimes=res.bean.itemSorceTime;
+          })
+        }
       },
       mounted() {
         this.goodsId=this.$route.query.id;

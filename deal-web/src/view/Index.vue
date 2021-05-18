@@ -44,7 +44,7 @@
         <el-carousel :interval="4000" type="card" height="440px" >
           <el-carousel-item v-for="item in top3Goods" :key="item.id">
             <div class="bgCo1">
-              <el-image :src="item.picturesUrl"></el-image>
+              <el-image :src="item.picturesurl"></el-image>
             </div>
           </el-carousel-item>
         </el-carousel>
@@ -55,7 +55,7 @@
           <el-row>
             <el-col :span="3" v-for="(item, index) in topGoods" :key="item.id" :offset='2'>
               <el-card :body-style="{ padding: '0px',height:'290px'}" class="card">
-                <el-image :src="item.picturesUrl" fit="fill" class="image"></el-image>
+                <el-image :src="item.picturesurl" fit="fill" class="image"></el-image>
                 <div style="padding: 14px;">
                   <span>{{item.title}}:¥{{item.price}}</span>
                   <div class="">
