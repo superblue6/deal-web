@@ -60,6 +60,14 @@
                       <span>我认为 :</span>
                       <el-rate v-model="rate" show-text :texts="texts" text-colorElContainer="#ff9900" @change="changeScore"></el-rate>
                     </div>
+                    <div class="sellerMessage">
+                      <i class="el-icon-user-solid">:{{sellerContact.sellerName}}</i>&nbsp&nbsp
+                      <i class="el-icon-phone">:{{sellerContact.phone}}</i>
+                    </div>
+                    <div class="sellerMessage">
+                      <i>微信:{{sellerContact.wechat}}</i>&nbsp&nbsp
+                      <i >QQ:{{sellerContact.qq}}</i>
+                    </div>
                   </div>
                 </el-col>
               </el-row>
@@ -111,7 +119,8 @@
             _this.goodsDetail.title=res.bean.dalItem.title;
             _this.goodsDetail.price=res.bean.dalItem.price;
             _this.goodsDetail.des=res.bean.dalItem.des;
-            _this.sellerContact=res.bean.userContact;
+            _this.sellerContact=res.bean.userContact.contact;
+            _this.sellerContact.sellerName=res.bean.userContact.userName;
           })
         },
         click(){

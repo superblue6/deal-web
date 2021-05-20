@@ -99,3 +99,9 @@ height: 30px;
   font-size: 15px;
   font-weight: bold;
 }
+.sellerMessage{
+  display: flex;
+  margin-top: 20px;
+  margin-left: 10px;
+
+}
