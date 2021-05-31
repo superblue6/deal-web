@@ -96,21 +96,29 @@
           this.$router.push("/addGoods");
         },
         load(){
+          this.getTop3Goods();
           this.getTopGoods();
         },
-        getTopGoods(){
+        getTop3Goods(){
           let _this=this;
-          this.$axios.get("/goods/getTopGoods?number="+'15').then(res=>{
+          this.$axios.get("/goods/getTopGoods?number="+'3').then(res=>{
             if (res.returnCode!='0'){
               _this.errorAlert("服务器错误");
               return;
             };
             let list=res.beans;
-            for (let i=0; i<3 ;i++){
-              _this.top3Goods.push(list[i]);
+            _this.top3Goods=list;
+          });
+        },
+        //获取分页数据
+        getTopGoods(){
+          let _this=this;
+          this.$axios.get("/goods/getTopGoods").then(res=>{
+            if (res.returnCode!='0'){
+              _this.errorAlert("服务器错误");
+              return;
             };
-
-            list.splice(0,3);
+            let list=res.beans;
             _this.topGoods=list;
           });
         },
